@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+public @ResponseBody String addElement(
+@RequestParam String prefix,
+@RequestParam String model,
+@RequestParam String section,
+@RequestParam String[] properties,
+@RequestParam String[] printers
+
+<form action="/api/cartridges/add" method="post">
+    <label>
+        Префикс<br>
+        <input type="text" name="prefix" required />
+    </label><br><br>
+
+    <label>
+        Модель<br>
+        <input type="text" name="model" required />
+    </label><br><br>
+
+    <label>
+        Раздел<br>
+        <input type="text" name="section" required />
+    </label><br><br>
+
+    <label>
+        Названия свойств<br>
+        <input type="text" name="propertiesNames[]" /><br>
+        <input type="text" name="propertiesNames[]" /><br>
+        <input type="text" name="propertiesNames[]" /><br>
+        <input type="text" name="propertiesNames[]" /><br>
+        <input type="text" name="propertiesNames[]" />
+    </label><br><br>
+
+    <label>
+        Значения свойств<br>
+        <input type="text" name="properties[]" /><br>
+        <input type="text" name="properties[]" /><br>
+        <input type="text" name="properties[]" /><br>
+        <input type="text" name="properties[]" /><br>
+        <input type="text" name="properties[]" />
+    </label><br><br>
+
+    <label>
+        Принтеры<br>
+        <input type="text" name="printers[]" /><br>
+        <input type="text" name="printers[]" /><br>
+        <input type="text" name="printers[]" /><br>
+        <input type="text" name="printers[]" /><br>
+        <input type="text" name="printers[]" />
+    </label><br><br>
+
+    <input type="submit" />
+</form>
+
+</body>
+</html>
