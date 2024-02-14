@@ -4,6 +4,12 @@
     <!-- th:each="element: ${elements}" -->
 </th:block>
 
+<th:block th:fragment="head_error">
+    <link th:href="@{/style.css}" rel="stylesheet" />
+    <title th:text="'Ошибка - ' + ${status}" />
+    <!-- th:each="element: ${elements}" -->
+</th:block>
+
 <th:block th:fragment="top_menu">
     <div id="header_panel">
         <div id="header_section">

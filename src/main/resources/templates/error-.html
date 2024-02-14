@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+    <head th:insert="~{include/header :: head_error}">
+    </head>
+    <body>
+        <header th:insert="~{include/header :: top_menu}"></header>
+        <div id="content">
+            <div id="content_column_one" th:insert="~{include/header :: side_menu}"></div>
+
+            <div id="content_column_two">
+                <div class="column_two_section post_div">
+                    <h1 th:text="${status} + ' - ' + ${error}" />
+                </div>
+            </div>
+            <div class="cleaner">&nbsp;</div>
+        </div>
+        <footer th:insert="~{include/footer :: footer}"></footer>
+    </body>
+</html>
