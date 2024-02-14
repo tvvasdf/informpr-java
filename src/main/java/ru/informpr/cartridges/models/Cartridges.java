@@ -14,14 +14,12 @@ public class Cartridges {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
-    private String prefix;
-    private String model;
-    private String section;
-    private String printers; //json
-    private String properties; //json
+    private String prefix, model, section;
+    private String printers, properties; //json
 
-    public String getProperties() {
-        return properties;
+    public Map<String, Object> getProperties() {
+        JSONObject json = new JSONObject(properties);
+        return json.toMap();
     }
 
     public void setProperties(Map<String, String> properties) {
@@ -53,12 +51,19 @@ public class Cartridges {
         this.model = model;
     }
 
-    public String getPrinters() {
-        return printers;
+    public String[] getPrinters() {
+        JSONArray json = new JSONArray(printers);
+        String[] result = new String[json.length()];
+
+        for (int i = 0; i < json.length(); i++) {
+            result[i] = json.getString(i);
+        }
+
+        return result;
     }
 
     public void setPrinters(String[] printers) {
-        List<Object> list = new ArrayList<>();
+        List<String> list = new ArrayList<>();
 
         for (int i = 0; i < printers.length; i++) {
             if (printers[i].isEmpty()) {
