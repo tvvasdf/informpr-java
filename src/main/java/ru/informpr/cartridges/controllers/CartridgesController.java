@@ -2,6 +2,7 @@ package ru.informpr.cartridges.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -18,12 +19,13 @@ public class CartridgesController {
 
     @PostMapping("/api/cartridges/add")
     public @ResponseBody String addElement(
-            @RequestParam String prefix,
-            @RequestParam String model,
-            @RequestParam String section,
-            @RequestParam(value = "propertiesNames[]") String[] propertiesNames,
-            @RequestParam(value = "properties[]") String[] properties,
-            @RequestParam(value = "printers[]") String[] printers
+        Model view,
+        @RequestParam String prefix,
+        @RequestParam String model,
+        @RequestParam String section,
+        @RequestParam(value = "propertiesNames[]") String[] propertiesNames,
+        @RequestParam(value = "properties[]") String[] properties,
+        @RequestParam(value = "printers[]") String[] printers
     ) {
 
         Cartridges item = new Cartridges();
@@ -49,7 +51,11 @@ public class CartridgesController {
             item.setPrinters(printers);
         }
 
-        cartridgesRepo.save(item);
-        return "{\"success\": true}";
+        item = cartridgesRepo.save(item);
+
+        view.addAttribute("title", "Добавить новую запись");
+        view.addAttribute("id", item.getId());
+
+        return "id: " + item.getId();
     }
 }
