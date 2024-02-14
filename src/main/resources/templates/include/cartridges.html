@@ -1,0 +1,33 @@
+<th:block th:fragment="list">
+    <div class="column_two_section post_div" th:each="el : ${cartridges}">
+        <table>
+            <tbody>
+            <tr>
+                <td class="img-td">
+                    <img src="/images/cart/test.jpg" class="img-cart" />
+                </td>
+                <td>
+                    <div class="text-td">
+                        <h3>
+                            <th:block th:text="${el.prefix}">prefix...</th:block>
+                            <a class="pr-cart-link" th:href="'/?q=' + ${el.model}" th:text="${el.model}">model...</a>
+                        </h3><br>
+                        <th:block th:each="prop : ${el.properties}">
+                            <b th:text="${prop.key} + ':'">prop_name:</b> <th:block th:text="${prop.value}">prop_value</th:block> <br>
+                        </th:block>
+                        <br><b>Совместимые принтеры:</b>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <div class="printers-list text-td" th:each="printer : ${el.printers}">
+                        <a class="link-item pr-cart-link" th:href="'/?q=' + ${printer}" th:text="${printer}">printer model...</a>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</th:block>
