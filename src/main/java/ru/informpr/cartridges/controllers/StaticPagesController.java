@@ -5,18 +5,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import ru.informpr.cartridges.models.Cartridges;
-import ru.informpr.cartridges.repo.CartridgesRepository;
+import ru.informpr.cartridges.models.CartridgesElements;
+import ru.informpr.cartridges.repo.CartridgesElementsRepository;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 @Controller
-public class PagesController {
+public class StaticPagesController {
 
     @Autowired
-    private CartridgesRepository cartridgesRepo;
+    private CartridgesElementsRepository cartridgesRepo;
 
     @GetMapping("/")
     public String mainPage(
@@ -25,7 +24,7 @@ public class PagesController {
        @RequestParam(required = false, defaultValue = "") String props
     ) {
         if (!q.isEmpty()) {
-            List<Cartridges> cartridges;
+            List<CartridgesElements> cartridges;
 
             if (Objects.equals(props, "Y")) {
                 cartridges = cartridgesRepo.findByModelOrPrefixOrPrintersOrPropertiesContaining(q, q, q, q);
@@ -41,24 +40,24 @@ public class PagesController {
             model.addAttribute("title", "Главная");
         }
 
-        return "main";
+        return "pages/static/main";
     }
 
-    @GetMapping({"/about-printers", "/about-printers/"})
+    @GetMapping("/about-printers")
     public static String aboutPrinters(Model model) {
         model.addAttribute("title", "О принтерах");
-        return "about-printers";
+        return "pages/static/about-printers";
     }
 
-    @GetMapping({"/about-cartridges", "/about-cartridges/"})
+    @GetMapping("/about-cartridges")
     public static String aboutCartridges(Model model) {
         model.addAttribute("title", "О картриджах");
-        return "about-cartridges";
+        return "pages/static/about-cartridges";
     }
 
-    @GetMapping({"/feedback", "/feedback/"})
+    @GetMapping("/feedback")
     public static String feedback(Model model) {
         model.addAttribute("title", "Обратная связь");
-        return "feedback";
+        return "pages/static/feedback";
     }
 }
