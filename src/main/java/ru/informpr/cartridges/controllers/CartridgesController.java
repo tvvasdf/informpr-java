@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import ru.informpr.cartridges.helpers.MainHelper;
 import ru.informpr.cartridges.models.Cartridges;
 import ru.informpr.cartridges.repo.CartridgesRepository;
 
@@ -29,22 +30,13 @@ public class CartridgesController {
     ) {
 
         Cartridges item = new Cartridges();
-        Map<String, String> props = new HashMap<>();
-
-        for (int i = 0; i < propertiesNames.length; i++) {
-            if (propertiesNames[i].isEmpty()) {
-                continue;
-            }
-
-            props.put(propertiesNames[i], properties[i]);
-        }
 
         item.setModel(model);
         item.setPrefix(prefix);
         item.setSection(section);
 
         if (properties.length > 0) {
-            item.setProperties(props);
+            item.setProperties(MainHelper.arraysToMap(propertiesNames, properties));
         }
 
         if (printers.length > 0) {

@@ -17,15 +17,22 @@ public class Cartridges {
     private String prefix, model, section;
     private String printers, properties; //json
 
-    public Map<String, Object> getProperties() {
-        JSONObject json = new JSONObject(properties);
-        return json.toMap();
+    public String getProperties() {
+        return properties;
+    }
+//    public Map<String, Object> getProperties() {
+//        JSONObject json = new JSONObject(properties);
+//        return json.toMap();
+//    }
+
+    public void setProperties(String properties) {
+        this.properties = properties;
     }
 
-    public void setProperties(Map<String, String> properties) {
-        JSONObject json = new JSONObject(properties);
-        this.properties = json.toString();
-    }
+//    public void setProperties(Map<String, String> properties) {
+//        JSONObject json = new JSONObject(properties);
+//        this.properties = json.toString();
+//    }
 
     public Integer getId() {
         return id;
@@ -51,32 +58,39 @@ public class Cartridges {
         this.model = model;
     }
 
-    public String[] getPrinters() {
-        JSONArray json = new JSONArray(printers);
-        String[] result = new String[json.length()];
+    public String getPrinters() {
+        return printers;
+    }
+//    public String[] getPrinters() {
+//        JSONArray json = new JSONArray(printers);
+//        Stri] result = new String[json.length()];
+//
+//        for (int i = 0; i < json.length(); i++) {
+//            result[i] = json.getString(i);
+//        }
+//
+//        return result;
+//    }
 
-        for (int i = 0; i < json.length(); i++) {
-            result[i] = json.getString(i);
-        }
-
-        return result;
+    public void setPrinters(String printers) {
+        this.printers = printers;
     }
 
-    public void setPrinters(String[] printers) {
-        List<String> list = new ArrayList<>();
-
-        for (int i = 0; i < printers.length; i++) {
-            if (printers[i].isEmpty()) {
-                continue;
-            }
-
-            list.add(i, printers[i]);
-        }
-
-        JSONArray json = new JSONArray(list);
-
-        this.printers = json.toString();
-    }
+//    public void setPrinters(String[] printers) {
+//        List<String> list = new ArrayList<>();
+//
+//        for (int i = 0; i < printers.length; i++) {
+//            if (printers[i].isEmpty()) {
+//                continue;
+//            }
+//
+//            list.add(i, printers[i]);
+//        }
+//
+//        JSONArray json = new JSONArray(list);
+//
+//        this.printers = json.toString();
+//    }
 
     public String getSection() {
         return section;
