@@ -10,10 +10,11 @@ import org.json.JSONObject;
 import java.util.*;
 
 @Entity
-public class Cartridges {
+public class CartridgesElements {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
+    private Byte access;
     private String prefix, model, section;
     private String printers, properties; //json
 
@@ -84,5 +85,13 @@ public class Cartridges {
 
     public void setSection(String section) {
         this.section = section;
+    }
+
+    public Byte getAccess() {
+        return access;
+    }
+
+    public void setAccess(Byte access) {
+        this.access = access;
     }
 }
