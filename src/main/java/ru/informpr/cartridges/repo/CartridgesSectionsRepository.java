@@ -5,5 +5,5 @@ import ru.informpr.cartridges.models.CartridgesSections;
 import java.util.List;
 
 public interface CartridgesSectionsRepository extends CrudRepository<CartridgesSections, Integer> {
-    List<CartridgesSections> findByCode(String code);
+    CartridgesSections findByCode(String code);
 }
