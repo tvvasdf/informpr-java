@@ -1,9 +1,6 @@
 package ru.informpr.cartridges.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -13,7 +10,11 @@ import java.util.*;
 public class CartridgesElements {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
+    @Column(unique=true)
     private Integer id;
+
+    @Column(unique=true)
+    private String code;
     private Byte access;
     private String prefix, model, section;
     private String printers, properties; //json
@@ -34,6 +35,14 @@ public class CartridgesElements {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public String getPrefix() {
