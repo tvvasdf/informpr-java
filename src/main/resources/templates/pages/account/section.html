@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head th:insert="~{/include/header :: head}" />
+
+<body>
+<header th:insert="~{/include/header :: top_menu}"></header>
+<div id="content">
+    <div id="content_column_one" th:insert="~{/include/header :: side_menu}"></div>
+
+    <div id="content_column_two">
+        <form method="POST" enctype="multipart/form-data" th:action="@{/cartridges/section/create}">
+            <div class="column_two_section post_div" id="third-div">
+                <h1>Введите информацию: </h1>
+
+                <div class="form-block">
+                    <label for="category">
+                        Категория:
+                    </label>
+                    <input type="text" name="category" id="category" placeholder="Расходники оригинальные" required="">
+                </div>
+
+                <div class="form-block">
+                    <label for="name">
+                        Название:
+                    </label>
+                    <input type="text" name="name" id="name" placeholder="Расходники Canon" required="">
+                </div>
+
+                <div class="form-block">
+                    <label for="code">
+                        Символьный код:
+                    </label>
+                    <input type="text" name="code" id="code" placeholder="canon" required="">
+                </div>
+            </div>
+
+            <div class="column_two_section post_div">
+                <div class="form-block">
+                    <label for="access">
+                        Уровень доступа:
+                    </label>
+
+                    <select name="access" id="access">
+                        <option value="1">Обычный пользователь</option>
+                        <option value="2">Модератор</option>
+                        <option value="3">Администратор</option>
+                    </select>
+                </div>
+
+                <input type="submit" class="btn" />
+            </div>
+        </form>
+    </div>
+
+    <div class="cleaner">&nbsp;</div>
+</div>
+<footer th:insert="~{/include/footer :: footer}"></footer>
+</body>
+</html>
+
+

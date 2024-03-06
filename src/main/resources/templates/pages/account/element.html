@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head th:insert="~{/include/header :: head}" />
+
+<body>
+<header th:insert="~{/include/header :: top_menu}"></header>
+<div id="content">
+    <div id="content_column_one" th:insert="~{/include/header :: side_menu}"></div>
+
+    <div id="content_column_two">
+        <form method="POST" enctype="multipart/form-data">
+            <div class="column_two_section post_div" id="third-div">
+                <h1>Введите информацию: </h1>
+                <div class="form-block">
+                    <label for="prefix">
+                        Префикс:
+                    </label>
+                    <input type="text" name="prefix" id="prefix" placeholder="Картридж" required="">
+                </div>
+
+                <div class="form-block">
+                    <label for="model">
+                        Модель:
+                    </label>
+                    <input type="text" name="model" id="model" placeholder="Canon PG-46" required="">
+                </div>
+
+                <div class="form-block">
+                    <label>
+                        Свойства элемента:
+                    </label>
+                    <div class="inputs-col">
+                        <input type="text" name="propertiesNames[]" placeholder="Вид картриджа" required="">
+                        <input type="text" name="propertiesNames[]" placeholder="Цвет" required="">
+                        <input type="text" name="propertiesNames[]" placeholder="Ресурс" required="">
+                        <input type="text" name="propertiesNames[]" placeholder="" required="">
+                        <input type="text" name="propertiesNames[]" placeholder="" required="">
+                        <input type="text" name="propertiesNames[]" placeholder="" required="">
+                        <input type="text" name="propertiesNames[]" placeholder="" required="">
+                    </div>
+                    <div class="inputs-col">
+                        <input type="text" name="properties[]" placeholder="Струйный" required="">
+                        <input type="text" name="properties[]" placeholder="Красный" required="">
+                        <input type="text" name="properties[]" placeholder="500 листов формата А4" required="">
+                        <input type="text" name="properties[]" placeholder="" required="">
+                        <input type="text" name="properties[]" placeholder="" required="">
+                        <input type="text" name="properties[]" placeholder="" required="">
+                        <input type="text" name="properties[]" placeholder="" required="">
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="column_two_section post_div">
+                <div class="form-block">
+                    <label for="access">
+                        Уровень доступа:
+                    </label>
+
+                    <select name="access" id="access">
+                        <option value="1">Обычный пользователь</option>
+                        <option value="2">Модератор</option>
+                        <option value="3">Администратор</option>
+                    </select>
+                </div>
+
+                <div class="form-block">
+                    <label for="section">
+                        Раздел:
+                    </label>
+
+                    <select required="required" name="section" id="section" th:each="section : ${sections}">
+                        <option disabled="disabled" th:text="'--- ' + ${section.key} + ' ---'">CATEGORY</option>
+                        <th:block th:each="item : ${section.value}">
+                            <option th:value="${item.code}" th:text="${item.name}">SECTION</option>
+                        </th:block>
+                    </select>
+                </div>
+            </div>
+
+            <div class="column_two_section post_div">
+                <h1>Загрузите картинку картриджа: </h1>
+                <input name="picture" required="" type="file" accept="image/jpeg">
+                (поддерживаемые формат: jpg. Размер не больше 2МБ)
+                <br />
+                <input type="submit" class="btn" />
+            </div>
+        </form>
+    </div>
+
+    <div class="cleaner">&nbsp;</div>
+</div>
+<footer th:insert="~{/include/footer :: footer}"></footer>
+</body>
+</html>
+
+

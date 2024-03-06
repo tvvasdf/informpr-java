@@ -4,6 +4,21 @@ CSS Credit: http://www.templatemo.com/
 
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap');
 
+.form-block {
+    display: flex;
+    justify-content: space-between;
+    width: 35%;
+    margin-top: 15px;
+}
+
+.form-block > .inputs-col {
+    margin-left: 3rem;
+}
+
+.form-block > .inputs-col > input {
+    margin-top: 0.5rem;
+}
+
 body {
 	margin: 0;
 	padding: 0;
